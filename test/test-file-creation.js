@@ -8,13 +8,13 @@ var _ = require('underscore.string');
 describe('Angular generator', function () {
   var angular;
   var expected = [
-    'app/.htaccess',
-    'app/404.html',
-    'app/favicon.ico',
-    'app/robots.txt',
-    'app/styles/main.scss',
-    'app/views/main.html',
-    'app/index.html',
+    'src/.htaccess',
+    'src/404.html',
+    'src/favicon.ico',
+    'src/robots.txt',
+    'src/styles/main.scss',
+    'src/views/main.html',
+    'src/index.html',
     '.bowerrc',
     '.editorconfig',
     '.gitignore',
@@ -43,7 +43,7 @@ describe('Angular generator', function () {
       angular = helpers.createGenerator(
         'angular:app',
         [
-          '../../app',
+          '../../src',
           '../../common',
           '../../controller',
           '../../main', [
@@ -71,8 +71,8 @@ describe('Angular generator', function () {
     it('creates expected JS files', function (done) {
       angular.run({}, function() {
         helpers.assertFile([].concat(expected, [
-          'app/scripts/app.js',
-          'app/scripts/controllers/main.js',
+          'src/scripts/src.js',
+          'src/scripts/controllers/main.js',
           'test/spec/controllers/main.js'
         ]));
         done();
@@ -83,8 +83,8 @@ describe('Angular generator', function () {
       angular.env.options.coffee = true;
       angular.run([], function () {
         helpers.assertFile([].concat(expected, [
-          'app/scripts/app.coffee',
-          'app/scripts/controllers/main.coffee',
+          'src/scripts/src.coffee',
+          'src/scripts/controllers/main.coffee',
           'test/spec/controllers/main.coffee'
         ]));
         done();
@@ -102,7 +102,7 @@ describe('Angular generator', function () {
         genTester.run([], function () {
           helpers.assertFileContent([
             [
-              path.join('app/scripts', targetDirectory, name + '.js'),
+              path.join('src/scripts', targetDirectory, name + '.js'),
               new RegExp(
                 generatorType + '\\(\'' + scriptNameFn(name) + suffix + '\'',
                 'g'
@@ -152,7 +152,7 @@ describe('Angular generator', function () {
 
       helpers.mockPrompt(angularView, mockPrompts);
       angularView.run([], function () {
-        helpers.assertFile(['app/views/foo.html']);
+        helpers.assertFile(['src/views/foo.html']);
         done();
       });
     });
@@ -164,7 +164,7 @@ describe('Angular generator', function () {
 
       helpers.mockPrompt(angularView, mockPrompts);
       angularView.run([], function () {
-        helpers.assertFile(['app/views/foo/bar.html']);
+        helpers.assertFile(['src/views/foo/bar.html']);
         done();
       });
     });

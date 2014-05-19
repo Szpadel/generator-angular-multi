@@ -54,10 +54,10 @@ function rewriteFile (args) {
 }
 
 function appName (self) {
-  var counter = 0, suffix = self.options['app-suffix'];
+  var counter = 0, suffix = self.options['src-suffix'];
   // Have to check this because of generator bug #386
   process.argv.forEach(function(val) {
-    if (val.indexOf('--app-suffix') > -1) {
+    if (val.indexOf('--src-suffix') > -1) {
       counter++;
     }
   });

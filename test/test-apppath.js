@@ -46,7 +46,7 @@ describe('Angular generator appPath option', function () {
       angular = helpers.createGenerator(
         'angular:app',
         [
-          '../../app',
+          '../../src',
           '../../common',
           '../../controller',
           '../../main', [
@@ -75,7 +75,7 @@ describe('Angular generator appPath option', function () {
     it('creates expected JS files', function (done) {
       angular.run({}, function() {
         helpers.assertFile([].concat(expected, [
-          appPath + '/scripts/app.js',
+          appPath + '/scripts/src.js',
           appPath + '/scripts/controllers/main.js',
           'test/spec/controllers/main.js'
         ]));
@@ -87,7 +87,7 @@ describe('Angular generator appPath option', function () {
       angular.env.options.coffee = true;
       angular.run([], function () {
         helpers.assertFile([].concat(expected, [
-          appPath + '/scripts/app.coffee',
+          appPath + '/scripts/src.coffee',
           appPath + '/scripts/controllers/main.coffee',
           'test/spec/controllers/main.coffee'
         ]));

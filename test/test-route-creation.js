@@ -8,9 +8,9 @@ describe('Angular generator route mechanism', function () {
   var angular;
   var route = 'simpleroute';
   var expected = [
-    'app/scripts/controllers/' + route + '.js',
+    'src/scripts/controllers/' + route + '.js',
     'test/spec/controllers/' + route + '.js',
-    'app/views/' + route + '.html'
+    'src/views/' + route + '.html'
   ];
   var genOptions = {
     'skip-install': true,
@@ -32,7 +32,7 @@ describe('Angular generator route mechanism', function () {
       angular = helpers.createGenerator(
         'angular:app',
         [
-          '../../app',
+          '../../src',
           '../../common',
           '../../controller',
           '../../main',
@@ -68,7 +68,7 @@ describe('Angular generator route mechanism', function () {
       angular.run({}, function(e) {
         helpers.assertFile(expected);
         helpers.assertFileContent(
-          'app/scripts/app.js',
+          'src/scripts/src.js',
           new RegExp('when\\(\'/' + route + '\'')
         );
 
@@ -84,7 +84,7 @@ describe('Angular generator route mechanism', function () {
       angular.run({}, function() {
         helpers.assertFile(expected);
         helpers.assertFileContent(
-          'app/scripts/app.js',
+          'src/scripts/src.js',
           new RegExp('when\\(\'/' + uri + '\'')
         );
 

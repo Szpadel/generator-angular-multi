@@ -25,7 +25,7 @@ util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.createViewFiles = function createViewFiles() {
   this.template(
-    'app/views/view.html',
+    'src/views/view.html',
     path.join(
       this.env.options.appPath,
       'views',

@@ -14,12 +14,12 @@ var Generator = module.exports = function Generator(args, options) {
   this.appname = this.appname || path.basename(process.cwd());
   this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
 
-  this.option('app-suffix', {
+  this.option('src-suffix', {
     desc: 'Allow a custom suffix to be added to the module name',
     type: String,
     required: 'false'
   });
-  this.env.options['app-suffix'] = this.options['app-suffix'];
+  this.env.options['src-suffix'] = this.options['src-suffix'];
   this.scriptAppName = this.appname + angularUtils.appName(this);
 
   args = ['main'];
@@ -239,7 +239,7 @@ Generator.prototype.askForModules = function askForModules() {
 
 Generator.prototype.readIndex = function readIndex() {
   this.ngRoute = this.env.options.ngRoute;
-  this.indexFile = this.engine(this.read('app/index.html'), this);
+  this.indexFile = this.engine(this.read('src/index.html'), this);
 };
 
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
@@ -255,7 +255,7 @@ Generator.prototype.appJs = function appJs() {
     html: this.indexFile,
     fileType: 'js',
     optimizedPath: 'scripts/scripts.js',
-    sourceFileList: ['scripts/app.js', 'scripts/controllers/main.js'],
+    sourceFileList: ['scripts/src/src.js', 'scripts/controllers/main.js'],
     searchPath: ['.tmp', this.appPath]
   });
 };
@@ -287,7 +287,7 @@ Generator.prototype._injectDependencies = function _injectDependencies() {
       directory: this.appPath + '/bower_components',
       bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
       ignorePath: this.appPath + '/',
-      src: 'app/index.html',
+      src: 'src/index.html',
       fileTypes: {
         html: {
           replace: {

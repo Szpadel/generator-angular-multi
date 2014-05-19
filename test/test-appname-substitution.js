@@ -10,7 +10,7 @@ describe('Angular generator template mechanism', function () {
 
   beforeEach(function (done) {
     var deps = [
-      '../../../app',
+      '../../../src',
       '../../../common',
       '../../../controller',
       '../../../main', [
@@ -43,18 +43,18 @@ describe('Angular generator template mechanism', function () {
   it('should generate the same appName in every file', function (done) {
     angular.run({}, function () {
       helpers.assertFile([
-        'app/scripts/app.js',
-        'app/scripts/controllers/main.js',
-        'app/index.html',
+        'src/scripts/src.js',
+        'src/scripts/controllers/main.js',
+        'src/index.html',
         'test/spec/controllers/main.js'
       ]);
 
       helpers.assertFileContent(
-        'app/scripts/app.js',
+        'src/scripts/src.js',
         new RegExp('module\\(\'' + appName + 'App\'')
       );
       helpers.assertFileContent(
-        'app/scripts/controllers/main.js',
+        'src/scripts/controllers/main.js',
         new RegExp('module\\(\'' + appName + 'App\'')
       );
       helpers.assertFileContent(
@@ -63,8 +63,8 @@ describe('Angular generator template mechanism', function () {
       );
 
       helpers.assertFileContent(
-        'app/index.html',
-        new RegExp('ng-app=\"' + appName + 'App\"')
+        'src/index.html',
+        new RegExp('ng-src=\"' + appName + 'App\"')
       );
       done();
     });

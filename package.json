@@ -1,6 +1,6 @@
 {
   "name": "generator-angular",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
@@ -8,13 +8,13 @@
     "framework",
     "component",
     "front-end",
-    "app",
+    "src",
     "angular"
   ],
   "author": "The Yeoman Team",
-  "main": "app/index.js",
+  "main": "src/index.js",
   "files": [
-    "app",
+    "src",
     "common",
     "constant",
     "controller",
